@@ -1,26 +1,14 @@
-from typing import Any, Literal
-from pydantic import BaseModel, Field, ConfigDict
-
-
-class CanonReport(BaseModel):
-    passed: bool
-    warnings: list[Any] = Field(default_factory=list)
-    confidence: float = 0.0
+from pydantic import BaseModel, Field
 
 
 class AskRequest(BaseModel):
-    question: str = Field(min_length=1, max_length=4000)
+    question: str
     tts: bool = False
-    stream: bool = False
-    session_id: str | None = None
 
 
 class AskResponse(BaseModel):
-    text: str
     answer: str
     sources: list[str] = Field(default_factory=list)
-    confidence: float
-    canon_validation: dict
     audio: str | None = None
 
 
