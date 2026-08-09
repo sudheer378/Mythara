@@ -3,7 +3,7 @@ from pathlib import Path
 from backend.app.ai.embeddings import cosine_similarity, embed_text
 
 
-class JsonVectorStore:
+class HybridVectorStore:
     def __init__(self, path: Path):
         self.path = path
         self.path.mkdir(parents=True, exist_ok=True)

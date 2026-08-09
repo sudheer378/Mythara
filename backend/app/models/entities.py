@@ -8,6 +8,9 @@ class Character(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(120), unique=True, index=True)
     description: Mapped[str] = mapped_column(Text, default="")
+    lore: Mapped[str] = mapped_column(Text, default="")
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    audio_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
     data: Mapped[dict] = mapped_column(JSON, default=dict)
 
 
@@ -16,6 +19,9 @@ class Realm(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(120), unique=True, index=True)
     description: Mapped[str] = mapped_column(Text, default="")
+    lore: Mapped[str] = mapped_column(Text, default="")
+    map_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    audio_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
     data: Mapped[dict] = mapped_column(JSON, default=dict)
 
 
@@ -24,4 +30,7 @@ class Artifact(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(120), unique=True, index=True)
     description: Mapped[str] = mapped_column(Text, default="")
+    lore: Mapped[str] = mapped_column(Text, default="")
+    image_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
+    audio_path: Mapped[str | None] = mapped_column(String(500), nullable=True)
     data: Mapped[dict] = mapped_column(JSON, default=dict)
