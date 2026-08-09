@@ -1,0 +1,5 @@
+const API = 'http://localhost:8000/api';
+async function ask(){const r=await fetch(`${API}/ask`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:question.value,tts:true})});const j=await r.json();answer.textContent=JSON.stringify(j,null,2); if(j.audio){audio.src='http://localhost:8000'+j.audio}}
+async function createMythral(){const r=await fetch(`${API}/create/mythral`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:name.value,type:type.value,class:document.getElementById('class').value})});draft.textContent=JSON.stringify(await r.json(),null,2)}
+async function approve(){const r=await fetch(`${API}/approve`,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({draft_path:draftPath.value})});approval.textContent=JSON.stringify(await r.json(),null,2)}
+async function searchEnc(){const r=await fetch(`${API}/encyclopedia/search?q=${encodeURIComponent(search.value)}`);results.textContent=JSON.stringify(await r.json(),null,2)}
